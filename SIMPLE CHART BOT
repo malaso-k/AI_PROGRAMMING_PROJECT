@@ -1,0 +1,29 @@
+def course_assistant_bot():
+    print("Hello! I’m your Course Assistant Bot. You can ask me questions about the AI course, faculty, schedule, or general info.")
+    print("Type 'exit' to end the chat.\n")
+
+    while True:
+        user_input = input("You: ").lower()
+
+        if user_input == "exit":
+            print("Bot: Goodbye! Have a great day ahead.")
+            break
+
+        elif "ai course" in user_input or "artificial intelligence" in user_input:
+            print("Bot: Our AI course covers machine learning, deep learning, and natural language processing basics.")
+
+        elif "professor" in user_input or "teacher" in user_input:
+            print("Bot: The AI course is taught by Dr. Jane Doe, an expert in machine learning.")
+
+        elif "class" in user_input or "schedule" in user_input or "timing" in user_input:
+            print("Bot: Classes are held every Monday and Wednesday at 10 AM in Room 204.")
+
+        elif "hello" in user_input or "hi" in user_input:
+            print("Bot: Hello! How can I assist you today?")
+
+        elif "bye" in user_input or "good night" in user_input or "see you" in user_input:
+            print("Bot: Goodbye! Wishing you all the best.")
+            break
+
+        else:
+            print("Bot: I’m sorry, I don’t have information on that. Could you please rephrase?")

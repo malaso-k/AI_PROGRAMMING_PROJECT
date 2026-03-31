@@ -1,0 +1,339 @@
+# finance_faq_bot.py
+ 
+import re
+ 
+def normalize(text: str) -> str:
+
+    return re.sub(r"\s+", " ", text.strip().lower())
+ 
+def print_welcome():
+
+    print("=" * 70)
+
+    print("   💰 Finance Helper Bot")
+
+    print("=" * 70)
+
+    print("Hello 😊 I’m your calm assistant for general finance questions.")
+
+    print("You can ask me things like:")
+
+    print(" - how do i open an account")
+
+    print(" - what is a savings account")
+
+    print(" - what is interest rate")
+
+    print(" - how do i apply for a loan")
+
+    print(" - what is credit score")
+
+    print(" - how can i save more money")
+
+    print(" - what is a budget")
+
+    print(" - what fees do you charge")
+
+    print("Type 'help' to see this list again.")
+
+    print("Type 'exit' or 'quit' to leave the chat.")
+
+    print("-" * 70)
+ 
+def get_response(user_input: str) -> str:
+
+    text = normalize(user_input)
+ 
+    # Exit shortcut
+
+    if text in {"exit", "quit", "bye", "goodbye"}:
+
+        return "Thank you for chatting with me. I wish you a calm and successful financial journey. 🌱"
+ 
+    # Greetings / small talk
+
+    if "hello" in text or "hi" in text or "hey" in text:
+
+        return "Hello! 😊 How can I help you with your money or our financial services today?"
+ 
+    if "how are you" in text:
+
+        return "I’m doing well, thank you for asking. I’m here to support you with clear, simple financial answers."
+ 
+    if "who are you" in text or "what are you" in text:
+
+        return "I am a friendly finance FAQ bot designed to answer common questions about accounts, loans, saving, and other money topics."
+ 
+    if "thank" in text:
+
+        return "You’re very welcome. I’m happy to help. If you have another question, feel free to ask."
+ 
+    # Accounts
+
+    if "open an account" in text or ("open" in text and "account" in text):
+
+        return (
+
+            "To open an account, you usually fill in an online form or visit a branch with your ID, contact details, "
+
+            "and sometimes proof of address. The process is simple and our team will guide you step by step."
+
+        )
+ 
+    if "savings account" in text:
+
+        return (
+
+            "A savings account is a safe place to keep your money while earning a small amount of interest. "
+
+            "You can deposit and withdraw, but it is mainly for saving, not for daily payments."
+
+        )
+ 
+    if "current account" in text or "checking account" in text:
+
+        return (
+
+            "A current (or checking) account is for everyday use: receiving salary, paying bills, and making transfers. "
+
+            "It usually comes with a card and online banking access."
+
+        )
+ 
+    if "minimum balance" in text:
+
+        return (
+
+            "Some accounts require a minimum balance to avoid monthly fees. The exact amount depends on the account type. "
+
+            "Please check the account details page or our tariff guide for the current minimum balance."
+
+        )
+ 
+    # Interest, rates, fees
+
+    if "interest rate" in text or "rate" in text and "interest" in text:
+
+        return (
+
+            "An interest rate is the percentage charged on loans or paid on savings over time. For savings, higher rates "
+
+            "mean more earnings. For loans, higher rates mean you pay more back. Always check the annual rate before deciding."
+
+        )
+ 
+    if "fees" in text or "charges" in text or "service charge" in text:
+
+        return (
+
+            "Common fees include monthly account maintenance fees, ATM fees, transfer fees, and sometimes card replacement fees. "
+
+            "You can find exact amounts in our pricing or tariff guide on the website."
+
+        )
+ 
+    if "hidden fees" in text or "extra charges" in text:
+
+        return (
+
+            "Our goal is to be transparent. All standard fees are listed in our pricing or tariff guide. If something is not clear, "
+
+            "please contact customer support and we will explain any charges in simple language."
+
+        )
+ 
+    # Loans
+
+    if "apply for a loan" in text or ("loan" in text and "apply" in text):
+
+        return (
+
+            "To apply for a loan, you normally fill an application form, provide proof of income and identification, "
+
+            "and agree to a credit check. Once approved, you receive the funds and repay in monthly installments."
+
+        )
+ 
+    if "loan eligibility" in text or "qualify for a loan" in text:
+
+        return (
+
+            "Loan eligibility depends on your income, existing debts, credit history, and sometimes employment status. "
+
+            "We recommend using our online loan calculator or speaking with an advisor to see what you may qualify for."
+
+        )
+ 
+    if "loan term" in text or "repayment period" in text:
+
+        return (
+
+            "The loan term is how long you have to pay back the loan, for example 12, 24, or 60 months. "
+
+            "Longer terms mean smaller monthly payments but more total interest; shorter terms mean higher monthly payments but less total interest."
+
+        )
+ 
+    # Cards & payments
+
+    if "debit card" in text:
+
+        return (
+
+            "A debit card is linked to your bank account. When you pay with it, the money comes directly from your account balance. "
+
+            "It is useful for everyday spending and ATM withdrawals."
+
+        )
+ 
+    if "credit card" in text:
+
+        return (
+
+            "A credit card allows you to borrow money up to a limit for purchases and pay it back later. "
+
+            "If you do not pay the full balance each month, interest is charged. It is important to use credit cards responsibly."
+
+        )
+ 
+    if "lost card" in text or "stolen card" in text:
+
+        return (
+
+            "If your card is lost or stolen, please block it immediately using the app or by calling our emergency number. "
+
+            "We will help you secure your account and issue a new card as soon as possible."
+
+        )
+ 
+    # Security & fraud
+
+    if "fraud" in text or "scam" in text or "phishing" in text:
+
+        return (
+
+            "If you suspect fraud or a scam, do not share any codes or passwords. Contact our official support number or branch immediately. "
+
+            "We will review your account activity and help you secure your funds."
+
+        )
+ 
+    if "secure" in text or "safety" in text or "safe" in text:
+
+        return (
+
+            "We use encryption, secure login, and monitoring systems to protect your accounts. "
+
+            "You can help by using strong passwords, enabling two‑factor authentication, and never sharing your PIN or OTP with anyone."
+
+        )
+ 
+    # Personal finance education
+
+    if "budget" in text or "what is a budget" in text:
+
+        return (
+
+            "A budget is a simple plan for your money. You list your income, list your expenses, and decide how much to save. "
+
+            "A good budget helps you avoid overspending and move calmly toward your financial goals."
+
+        )
+ 
+    if "save more" in text or "how to save money" in text:
+
+        return (
+
+            "To save more money, try tracking your spending, cutting small unnecessary costs, and paying yourself first by moving "
+
+            "a fixed amount into savings every month. Even small, consistent amounts add up over time."
+
+        )
+ 
+    if "credit score" in text or "credit rating" in text:
+
+        return (
+
+            "A credit score is a number that shows how reliably you have handled debt in the past. "
+
+            "Paying bills on time, keeping card balances low, and avoiding too many new loans can improve your score gradually."
+
+        )
+ 
+    if "retirement" in text or "pension" in text:
+
+        return (
+
+            "Retirement savings are funds you put aside now to support you when you stop working. "
+
+            "Starting early, even with small amounts, can make a big difference because your money has more time to grow."
+
+        )
+ 
+    # Help and support
+
+    if "contact" in text or "support" in text or "customer care" in text:
+
+        return (
+
+            "You can contact our support team through the phone number, email, or live chat listed on our website’s contact page. "
+
+            "For account‑specific issues, please have your customer ID ready so we can assist you quickly."
+
+        )
+ 
+    if text == "help":
+
+        return (
+
+            "You can ask me about: opening accounts, savings vs current accounts, interest rates, fees, loans, cards, "
+
+            "security and fraud, budgets, saving money, and credit scores. Just type your question in simple words."
+
+        )
+ 
+    # Default fallback
+
+    return (
+
+        "Thank you for your question. I may not fully understand it yet. "
+
+        "Could you kindly rephrase it in simple words, for example: "
+
+        "'how do i apply for a loan?' or 'what is a savings account?' so I can help better."
+
+    )
+ 
+def main():
+
+    print_welcome()
+
+    while True:
+
+        try:
+
+            user_input = input("\nYou: ")
+
+            if not user_input.strip():
+
+                continue
+
+            if normalize(user_input) in {"exit", "quit"}:
+
+                print("Bot:", get_response(user_input))
+
+                break
+
+            reply = get_response(user_input)
+
+            print("Bot:", reply)
+
+        except KeyboardInterrupt:
+
+            print("\nBot: Thank you for chatting. Goodbye! 👋")
+
+            break
+ 
+if __name__ == "__main__":
+
+    main()

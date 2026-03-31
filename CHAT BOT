@@ -1,0 +1,28 @@
+def course_assistant_bot(user_input):
+    user_input = user_input.lower()
+
+    if "hello" in user_input or "hi" in user_input:
+        return "Hello! I’m your Course Assistant Bot. How can I help you today?"
+
+    elif "ai course" in user_input or "artificial intelligence" in user_input:
+        return "Our AI course covers machine learning, deep learning, and natural language processing basics."
+
+    elif "professor" in user_input or "teacher" in user_input:
+        return "The AI course is taught by Dr. Jane Doe, an expert in machine learning."
+
+    elif "class" in user_input or "schedule" in user_input or "timing" in user_input:
+        return "Classes are held every Monday and Wednesday at 10 AM in Room 204."
+
+    elif "bye" in user_input or "good night" in user_input or "see you" in user_input:
+        return "Goodbye! Have a great day ahead."
+
+    else:
+        return "I’m sorry, I don’t have information on that. Could you please rephrase?"
+    
+
+# Example interaction
+print(course_assistant_bot("Hello"))
+print(course_assistant_bot("Tell me about AI course"))
+print(course_assistant_bot("Who is the professor?"))
+print(course_assistant_bot("When is the next class?"))
+print(course_assistant_bot("Bye"))
